@@ -1,0 +1,143 @@
+<%- include("parts/header")  %> 
+<%- include("parts/navbar")  %> 
+<ul class="cd-hero-slider">
+    <li class="selected">                    
+        <div class="cd-full-width">
+            <div class="container-fluid js-tm-page-content" data-page-no="1" data-page-type="gallery">
+                <div class="tm-img-gallery-container">
+                    <div class="tm-img-gallery gallery-one">
+                    <!-- Gallery One pop up connected with JS code below -->                                    
+                        <div class="tm-img-gallery-info-container">                                    
+                            <h2 class="tm-text-title tm-gallery-title tm-white"><span class="tm-white">Most Expensive Artwork In The Gallery</span></h2>
+                            <p class="tm-text">
+                            </p>
+                        </div>
+                        <% var result = Object.values(JSON.parse(JSON.stringify(artwork)));  %> 
+                        <% for(art of result){ %> 
+                            <% if(!art[0]) continue%> 
+                            <div class="grid-item">
+                                <figure class="effect-bubba">
+                                    <img src="<%=art[0].v_image%>" alt="Image" class="img-fluid tm-img">
+                                    <figcaption>
+                                        <h2 class="tm-figure-title"><%=art[0].v_art_title%></h2>
+                                        <p class="tm-figure-description"><%=art[0].v_description%> </p>
+                                        <a href="<%=art[0].v_image%>">View more</a>
+                                    </figcaption>           
+                                </figure>
+                            </div>
+                        <%} %> 
+                    </div>                                 
+                </div>
+            </div>                                                    
+        </div>                    
+    </li>
+
+   <!-- -------------------------------------------------------------------------------------- -->
+
+     <!-- Artists -->
+     <li>                    
+        <div class="cd-full-width">
+            <div class="container-fluid js-tm-page-content" data-page-no="2" data-page-type="gallery">
+                <div class="tm-img-gallery-container">
+                    <div class="tm-img-gallery gallery-two">
+                    <!-- Gallery Two pop up connected with JS code below -->
+                        
+                        <div class="tm-img-gallery-info-container">                                    
+                            <h2 class="tm-text-title tm-gallery-title"><span class="tm-white">Artists</span></h2>
+                            <p class="tm-text"><span class="tm-white"></span>
+                            </p>
+                        </div>
+                        <% for(artist of artists){ %> 
+                            <%#console.log(artist) %> 
+                        <div class="grid-item">
+                            <figure class="effect-bubba">
+                                <img src="<%=artist.image%>" alt="Image" class="img-fluid tm-img">
+                                <figcaption>
+                                    <p class="tm-figure-description"><%=artist.Art_title%></p>
+                                    <a href="<%=artist.image%>">View more</a>
+                                </figcaption>           
+                            </figure>
+                            <div class="artist-info-container"><a href="/artist/<%=artist.artistID%>"><%=artist.Artist_name%></a></div>
+                        </div>
+                        <% } %> 
+                                                                        
+                    </div>                                 
+                </div>
+            </div>                                                    
+        </div>                    
+    </li>
+
+
+    <li>
+        <div class="cd-full-width">
+            <div class="container-fluid js-tm-page-content tm-page-pad" data-page-no="5">
+                <div class="tm-contact-page">                                
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="tm-text-title tm-gallery-title"><span class="tm-white">Exhibitions</span></h2>
+                            <% for(exh of exhibitions){ %> 
+                            <div class="tm-flex tm-contact-container">                                
+                                <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact">
+                                    <!-- google map goes here -->
+                                    <img src="<%=exh.image_ex%>" alt="">
+                                </div>
+    
+                                <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact">
+                                    <h1 class="tm-contact-info"><%=exh.E_Name%> </h1>
+                                    <p></p>    
+                                    <p class="tm-text">Exhibitions ID: <%=exh.ExhibitionID%> </p>    
+                                    <p class="tm-text">Start date : <%=exh.Start_Date%> </p>    
+                                    <p class="tm-text">End date : <%=exh.End_Date%> </p>                                                
+                                                
+                                    
+                                    <!-- contact form -->
+                                    <a href="/exhibition/update/<%=exh.ExhibitionID%>" style='background-color : black;' type="submit" class="pull-xs-right tm-submit-btn">Update</a>
+                                </div>
+                            </div>
+                            <% } %> 
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>    
+    </div> <!-- .cd-full-width -->
+    </li>
+
+ <!----------------- CUSTOMERS  ------------------->
+
+ <li>
+    <div class="cd-full-width">
+        <div class="container-fluid js-tm-page-content tm-page-width tm-pad-b" data-page-no="4">
+            <div class="row tm-white-box-margin-b">
+                <div class="col-xs-12">
+                    <div class="tm-flex">
+                        <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding">
+                            <% for(customer of customers) {%> 
+                            <div style= 'margin-bottom: 30px;'  class="card text-center">
+                                <div style = "text-align: center;" class="card-header">
+                                    <u><%=customer.CustomerID%></u> 
+                                </div>
+                                <div style = "margin-top: 30px; text-align: center;"  class="card-body">
+                                  <h5 class="card-title"><%=customer.F_Name%> <%=customer.L_Name%> </h5>
+                                  <h5 class="card-text"><%=customer.city%> <%=customer.Address%></h5>
+                                  <h5 class="card-text"><%=customer.Age%> Years Old</h5>
+                                  <h5 class="card-text">Phone No. <%=customer.Phone_Number%></h5>
+                                  <br>
+                                  <a href="/customer/<%=customer.CustomerID%>" style='margin-bottom: 10px; background-color: #b2b48f; color: white;' 
+                                  class="btn">Orders List </a>
+                                </div>
+                              </div>
+                              <% } %> 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                     
+        </div>              
+    </div> <!-- .cd-full-width -->
+</li>
+
+<%- include("parts/footer")  %> 
