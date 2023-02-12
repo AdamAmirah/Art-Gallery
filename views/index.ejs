@@ -12,16 +12,16 @@
                             <p class="tm-text">
                             </p>
                         </div>
-                        <% var result = Object.values(JSON.parse(JSON.stringify(artwork)));  %> 
-                        <% for(art of result){ %> 
-                            <% if(!art[0]) continue%> 
+                        <% var result = Object.values(JSON.parse(JSON.stringify(artwork)));  %>
+                        <% for(art of result[0]){ %> 
+                            <%console.log(art) %>
                             <div class="grid-item">
-                                <figure class="effect-bubba">
-                                    <img src="<%=art[0].v_image%>" alt="Image" class="img-fluid tm-img">
+                                 <figure class="effect-bubba">
+                                    <img src="<%=art.image%>" alt="Image" class="img-fluid tm-img">
                                     <figcaption>
-                                        <h2 class="tm-figure-title"><%=art[0].v_art_title%></h2>
-                                        <p class="tm-figure-description"><%=art[0].v_description%> </p>
-                                        <a href="<%=art[0].v_image%>">View more</a>
+                                        <h2 class="tm-figure-title"><%=art.art_title%></h2>
+                                        <p class="tm-figure-description"><%=art.description%> </p>
+                                        <a href="<%=art.image%>">View more</a>
                                     </figcaption>           
                                 </figure>
                             </div>
