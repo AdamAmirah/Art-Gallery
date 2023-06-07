@@ -1,4 +1,5 @@
 # Art Gallery Management System
+[![My Skills](https://skills.thijs.gg/icons?i=javascript,nodejs,expressjs,mysql&theme=dark)](https://skills.thijs.gg)
 
 ### Live Demo
 [https://amirahartgallery.onrender.com](https://amirahartgallery.onrender.com)
